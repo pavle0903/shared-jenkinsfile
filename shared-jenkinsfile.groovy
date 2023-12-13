@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // when using docker hub, you dont need to specify the registry url in docker.withregistry
-                    docker.withRegistry('', credentials) {
+                    docker.withRegistry('', 'credentials') {
                         //build and push docker image
                         def imageName = params.DOCKER_IMAGE_NAME ?: 'default-image'
                         docker.build("pavle09/${imageName}:latest").push()
