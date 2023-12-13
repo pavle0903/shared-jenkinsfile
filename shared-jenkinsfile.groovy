@@ -1,7 +1,20 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'PROJECT_URL', defaultValue: 'https://github.com/pavle0903', description: 'Git repository URL')
+        string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'default-image-name', description: 'docker image name')
+    }
+
     stages {
+
+        stage('Checkout') {
+            steps {
+                // Checkout the Maven project from the Git repository
+                git credentialsId: 'github-credentials', url: params.PROJECT_URL
+            }
+        }
+
         stage('Build') {
             steps {
                 // Build applcation
