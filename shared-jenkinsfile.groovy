@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the Maven project from the Git repository
-                git credentialsId: 'github_credentials', url: params.PROJECT_URL, branch: main
+                git credentialsId: 'github_credentials', url: params.PROJECT_URL, branch: 'main'
             }
         }
 
